@@ -12,10 +12,10 @@ const fetchShopsSuccess = items => ({
   payload: { items },
 });
 
-export default function fetchShops() {
+export default function fetchShops(name = '') {
   return (dispatch) => {
     dispatch(fetchShopsBegin());
-    return request('GET', 'shops')
+    return request('GET', `shops?query=${name}`)
       .then(({ data }) => {
         const { shops } = data;
         dispatch(fetchShopsSuccess(shops));

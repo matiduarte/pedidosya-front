@@ -4,13 +4,14 @@ import App, { Container } from 'next/app';
 import { Provider } from 'react-redux';
 import withReduxStore from '../libs/with-redux';
 
+import 'bulma/css/bulma.min.css';
+
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
-    console.log(pageProps);
     return { pageProps };
   }
 
