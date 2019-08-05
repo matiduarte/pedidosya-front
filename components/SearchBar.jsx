@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { debounce } from 'throttle-debounce';
 import fetchShops from '../store/shops/actions';
+
+const HeaderBar = styled.div`
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    box-shadow: 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.2);
+    background-color: #589442;
+    height: 70px;
+`;
+
+const FlexDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%
+`;
+
+const styleInputSearch = {
+  width: '75%',
+};
 
 class Searchbar extends Component {
   constructor(props) {
@@ -32,27 +55,19 @@ class Searchbar extends Component {
   render() {
     const { value } = this.state;
     return (
-      <section className="hero is-primary is-bold">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title">
-              Shop finder
-            </h1>
-            <div className="field gnomes-search-field columns">
-              <div className="control column">
-                <input
-                  aria-label="search-input"
-                  className="input is-primary is-rounded"
-                  type="text"
-                  placeholder="search shop by name"
-                  onChange={this.changeQuery.bind(this)}
-                  value={value}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeaderBar>
+        <FlexDiv>
+          <input
+            style={styleInputSearch}
+            aria-label="search-input"
+            className="input"
+            type="text"
+            placeholder="Search shop by name"
+            onChange={this.changeQuery.bind(this)}
+            value={value}
+          />
+        </FlexDiv>
+      </HeaderBar>
     );
   }
 }

@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import fetchShops from '../store/shops/actions';
 import ShopCard from './ShopCard';
 
-const Container = styled.div`
-      display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-`;
 
 class ShopList extends Component {
   componentDidMount() {
@@ -20,11 +14,11 @@ class ShopList extends Component {
   render() {
     const { shops } = this.props;
     return (
-      <Container>
+      <div>
         {shops.map((shop, index) => (
           <ShopCard key={index} shop={shop} />
         ))}
-      </Container>
+      </div>
     );
   }
 }
