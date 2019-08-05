@@ -28,8 +28,8 @@ ShopList.propTypes = {
   dispatch: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const { shops } = state;
-  return shops;
-};
+const mapStateToProps = state => ({
+  shops: state.shops.filteredItems,
+});
+
 export default connect(mapStateToProps)(ShopList);

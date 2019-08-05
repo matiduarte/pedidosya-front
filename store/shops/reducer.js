@@ -2,32 +2,43 @@ import {
   FETCH_SHOPS_BEGIN,
   FETCH_SHOPS_SUCCESS,
   SORT_SHOPS,
+  FILTER_SHOPS,
 } from './actions';
 
 const initialState = {
-  shops: [],
-  paymentFilters: [],
-  results: 0,
-  selectedFilter: '',
+  items: [],
+  filteredItems: [],
+  paymentsMethods: [],
 };
 
 function doSort(state, action) {
   const { type } = action.payload;
-  const shops = [...state.shops];
-  switch (type) {
-    case 'Relevancia':
-      return {
-        ...state,
-        shops: shops.sort((a, b) => b.rating - a.rating),
-      };
-    case 'Tiempo de entrega':
-      return {
-        ...state,
-        shops: shops.sort((a, b) => a.deliveryTimeMinMinutes - b.deliveryTimeMinMinutes),
-      };
-    default:
-      return state;
-  }
+  const filteredItems = (type !== '')
+    ? state.items.sort((a, b) => b.rating - a.rating)
+    : state.items;
+  console.log(filteredItems);
+  return {
+    ...state,
+    filteredItems,
+  };
+}
+
+function doFilter(state, action) {
+  const { payment } = action.payload;
+  const filteredItems = (payment !== '')
+    ? state.items.filter(shop => shop.paymentMethods.includes(payment))
+    : state.items;
+  return {
+    ...state,
+    filteredItems,
+  };
+}
+
+function getPaymentMethods(items) {
+  const arrayPay = [];
+  items.forEach(i => i.paymentMethods.forEach(p => arrayPay.push(p)));
+  arrayPay.sort();
+  return [...new Set(arrayPay)];
 }
 
 export default (state = initialState, action) => {
@@ -39,15 +50,14 @@ export default (state = initialState, action) => {
     case FETCH_SHOPS_SUCCESS:
       return {
         ...state,
-        shops: action.payload.items,
-        results: action.payload.items.length,
+        items: action.payload.items,
+        filteredItems: action.payload.items,
+        paymentsMethods: getPaymentMethods(action.payload.items),
       };
     case SORT_SHOPS:
-      return {
-        ...state,
-        selectedFilter: action.payload.type,
-        shops: doSort(state, action),
-      };
+      return doSort(state, action);
+    case FILTER_SHOPS:
+      return doFilter(state, action);
     default:
       return state;
   }

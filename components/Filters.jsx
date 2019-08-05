@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Dropdown from './Dropdown';
+import PaymentDropdown from './PaymentDropdown';
 
 const PageContent = styled.div`
     padding-left: 1rem
@@ -30,6 +31,7 @@ const Filters = (props) => {
       <PageContent>
         <FlexDiv>
           {`${results} shops`}
+          <PaymentDropdown />
           <Dropdown />
         </FlexDiv>
         <CustomHr />
@@ -42,8 +44,7 @@ Filters.propTypes = {
   results: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = (state) => {
-  const { results } = state.shops;
-  return { results };
-};
+const mapStateToProps = state => ({
+  results: state.shops.filteredItems.length,
+});
 export default connect(mapStateToProps)(Filters);
