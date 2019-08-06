@@ -1,8 +1,10 @@
 # PedidosYa Client
 
-#### WARNING
+```
+WARNING
 Before start using the app, you must download and execute the api.
 [pedidosya-back repository.](https://github.com/matiduarte/pedidosya-back)
+```
 
 Installs the required dependencies for the server to start
 `npm i`
