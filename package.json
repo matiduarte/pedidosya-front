@@ -1,11 +1,13 @@
 {
   "name": "pedidosya-front",
   "version": "0.1.0",
+  "description": "PedidosYa challenge Client",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
@@ -25,6 +27,8 @@
     "throttle-debounce": "^2.1.0"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.18.0",

@@ -13,14 +13,24 @@ const initialState = {
 
 function doSort(state, action) {
   const { type } = action.payload;
-  const filteredItems = (type !== '')
-    ? state.items.sort((a, b) => b.rating - a.rating)
-    : state.items;
-  console.log(filteredItems);
-  return {
-    ...state,
-    filteredItems,
-  };
+  switch (type) {
+    case 'Relevancia':
+      return {
+        ...state,
+        filteredItems: [...state.filteredItems.sort((a, b) => b.rating - a.rating)],
+      };
+    case 'Tiempo de entrega':
+      return {
+        ...state,
+        filteredItems: [...state.filteredItems
+          .sort((a, b) => b.deliveryTimeMinMinutes - a.deliveryTimeMinMinutes)],
+      };
+    default:
+      return {
+        ...state,
+        filteredItems: [...state.filteredItems.sort((a, b) => a.name.localeCompare(b.name))],
+      };
+  }
 }
 
 function doFilter(state, action) {

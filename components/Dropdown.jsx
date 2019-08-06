@@ -6,7 +6,8 @@ import { sortShopsBy } from '../store/shops/actions';
 
 const borderSelector = {
   borderColor: '#589442',
-}
+};
+
 class Dropdown extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +25,7 @@ class Dropdown extends Component {
     return (
       <div className="field">
         <div className="control">
-          <div className="select is-primary">
+          <div className="select">
             <select style={borderSelector} onChange={this.handleInputChange}>
               <option>Ordenar por</option>
               <option>Relevancia</option>

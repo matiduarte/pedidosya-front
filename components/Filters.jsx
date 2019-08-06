@@ -24,13 +24,20 @@ const FlexDiv = styled.div`
   justify-content: space-between;
 `;
 
+const PDiv = styled.p`
+    font-size: 1rem;
+    font-weight: normal;
+    color: #3d4149;
+    margin: 0;
+`;
+
 const Filters = (props) => {
   const { results } = props;
   return (
     <div>
       <PageContent>
         <FlexDiv>
-          {`${results} shops`}
+          <PDiv>{`${results} restaurantes`}</PDiv>
           <PaymentDropdown />
           <Dropdown />
         </FlexDiv>

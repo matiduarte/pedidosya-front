@@ -13,7 +13,7 @@ const HeaderBar = styled.div`
     z-index: 20;
     box-shadow: 0 0.125rem 0.5rem 0 rgba(0, 0, 0, 0.2);
     background-color: #589442;
-    height: 70px;
+    height: 85px;
 `;
 
 const FlexDiv = styled.div`
@@ -62,7 +62,7 @@ class Searchbar extends Component {
             aria-label="search-input"
             className="input"
             type="text"
-            placeholder="Search shop by name"
+            placeholder="Busca restaurantes por nombre"
             onChange={this.changeQuery.bind(this)}
             value={value}
           />
