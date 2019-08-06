@@ -24,14 +24,12 @@ class PaymentDropdown extends Component {
   render() {
     const { paymentsMethods } = this.props;
     return (
-      <div className="field">
-        <div className="control">
-          <div className="select">
-            <select style={borderSelector} onChange={this.handleInputChange}>
-              <option>Filtrar por</option>
-              {paymentsMethods.map((p, i) => <option key={`payment_${i}`}>{p}</option>)}
-            </select>
-          </div>
+      <div className="select-responsive">
+        <div className="select">
+          <select style={borderSelector} onChange={this.handleInputChange}>
+            <option>Filtrar por</option>
+            {paymentsMethods.map((p, i) => <option key={`payment_${i}`}>{p}</option>)}
+          </select>
         </div>
       </div>
     );

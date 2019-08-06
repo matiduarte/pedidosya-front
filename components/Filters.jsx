@@ -10,7 +10,7 @@ const PageContent = styled.div`
     padding-right: 1rem;
     margin: auto;
     max-width: 62rem;
-    margin-top: 40px;
+    margin-top: 20px;
 `;
 
 const CustomHr = styled.hr`
@@ -29,6 +29,7 @@ const PDiv = styled.p`
     font-weight: normal;
     color: #3d4149;
     margin: 0;
+    margin-bottom: 20px;
 `;
 
 const Filters = (props) => {
@@ -38,6 +39,8 @@ const Filters = (props) => {
       <PageContent>
         <FlexDiv>
           <PDiv>{`${results} restaurantes`}</PDiv>
+        </FlexDiv>
+        <FlexDiv>
           <PaymentDropdown />
           <Dropdown />
         </FlexDiv>

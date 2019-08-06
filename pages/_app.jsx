@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import withReduxStore from '../libs/with-redux';
 
 import 'bulma/css/bulma.min.css';
+import './styles.css';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {

@@ -23,15 +23,13 @@ class Dropdown extends Component {
 
   render() {
     return (
-      <div className="field">
-        <div className="control">
-          <div className="select">
-            <select style={borderSelector} onChange={this.handleInputChange}>
-              <option>Ordenar por</option>
-              <option>Relevancia</option>
-              <option>Tiempo de entrega</option>
-            </select>
-          </div>
+      <div className="select-responsive">
+        <div className="select">
+          <select style={borderSelector} onChange={this.handleInputChange}>
+            <option>Ordenar por</option>
+            <option>Relevancia</option>
+            <option>Tiempo de entrega</option>
+          </select>
         </div>
       </div>
     );
